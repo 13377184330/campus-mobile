@@ -1,0 +1,246 @@
+:root {
+  --bg: #f5f6f8;
+  --text: #323233;
+  --text-2: #646566;
+  --text-3: #969799;
+  --up: #07c160;
+  --down: #ee0a24;
+  --brand: #1989fa;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.page {
+  min-height: 100vh;
+  background: var(--bg);
+  /* 给 iPhone 底部小横条留位置 */
+  padding-bottom: calc(16px + constant(safe-area-inset-bottom));
+  padding-bottom: calc(16px + env(safe-area-inset-bottom));
+}
+
+.page.with-tabbar {
+  padding-bottom: calc(66px + constant(safe-area-inset-bottom));
+  padding-bottom: calc(66px + env(safe-area-inset-bottom));
+}
+
+.card {
+  background: #fff;
+  border-radius: 12px;
+  margin: 12px;
+  padding: 14px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-2);
+  margin-bottom: 10px;
+}
+
+.section-title .hint {
+  font-weight: 400;
+  color: var(--text-3);
+}
+
+.empty-box {
+  padding: 40px 16px;
+}
+
+/* ---------- 学生卡片网格 ---------- */
+.stu-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  padding: 0 12px 12px;
+}
+
+.stu-card {
+  position: relative;
+  background: #fff;
+  border-radius: 12px;
+  padding: 12px 6px 10px;
+  text-align: center;
+  border: none;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  transition: transform 0.12s ease;
+  font-family: inherit;
+}
+
+.stu-card:active {
+  transform: scale(0.96);
+}
+
+.stu-card .left-tag {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  font-size: 10px;
+  color: var(--text-3);
+}
+
+.stu-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.stu-no {
+  font-size: 11px;
+  color: var(--text-3);
+  margin-top: 2px;
+}
+
+.stu-score {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 1px 9px;
+  border-radius: 10px;
+}
+
+/* ---------- 事由 chips ---------- */
+.chip-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border: 1px solid #ebedf0;
+  background: #fff;
+  border-radius: 16px;
+  padding: 7px 12px;
+  font-size: 13px;
+  color: var(--text);
+  transition: all 0.12s ease;
+}
+
+.chip:active {
+  transform: scale(0.97);
+}
+
+.chip .val {
+  font-size: 11px;
+  font-weight: 700;
+  border-radius: 8px;
+  padding: 0 5px;
+}
+
+.chip.pos .val {
+  color: var(--up);
+  background: rgba(7, 193, 96, 0.12);
+}
+
+.chip.neg .val {
+  color: var(--down);
+  background: rgba(238, 10, 36, 0.1);
+}
+
+.chip.active {
+  border-color: var(--brand);
+  color: var(--brand);
+  background: rgba(25, 137, 250, 0.07);
+}
+
+.chip.neg.active {
+  border-color: var(--down);
+  color: var(--down);
+  background: rgba(238, 10, 36, 0.07);
+}
+
+/* ---------- 分值颜色 ---------- */
+.score-up {
+  color: var(--up);
+  font-weight: 700;
+}
+
+.score-down {
+  color: var(--down);
+  font-weight: 700;
+}
+
+/* 动态列表里的一行 */
+.log-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 0;
+  border-bottom: 1px solid #f2f3f5;
+}
+
+.log-row:last-child {
+  border-bottom: none;
+}
+
+.log-row .avatar {
+  flex: 0 0 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(25, 137, 250, 0.1);
+  color: var(--brand);
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.log-row .body {
+  flex: 1;
+  min-width: 0;
+}
+
+.log-row .line1 {
+  font-size: 14px;
+  color: var(--text);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.log-row .line2 {
+  font-size: 12px;
+  color: var(--text-3);
+  margin-top: 3px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.log-row .value {
+  font-size: 16px;
+  font-weight: 700;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.log-row .after {
+  font-size: 11px;
+  color: var(--text-3);
+  text-align: right;
+  margin-top: 2px;
+}
